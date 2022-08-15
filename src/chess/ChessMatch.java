@@ -1,5 +1,7 @@
 package chess;
 
+import com.sun.javadoc.SourcePosition;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -24,8 +26,14 @@ public class ChessMatch {
 		}
 		return mat;
 	}
+	
+	public boolean[][] possiblesMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		ValidateSourcePosition(position);
+		return board.piece(position).possibleMoves();
+	}
 
-	public ChessPiece perforChessMove(ChessPosition sourcePosition, ChessPosition targPosition) {
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targPosition.toPosition();
 		ValidateSourcePosition(source);
